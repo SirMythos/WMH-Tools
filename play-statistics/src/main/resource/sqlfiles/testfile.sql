@@ -1,1 +1,1 @@
-SELECT * FROM Customer
+CREATE TABLE test (testid INT NOT NULL, feld VARCHAR (10) NULL, PRIMARY KEY (testid))
