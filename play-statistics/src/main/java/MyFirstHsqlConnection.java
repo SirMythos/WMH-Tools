@@ -18,7 +18,8 @@ public class MyFirstHsqlConnection {
 		Connection con = null;
 
 		try {
-			con = DriverManager.getConnection("jdbc:hsqldb:file:src/main/resources/hsqldb; shutdown=true", "root", "root");
+			con = DriverManager.getConnection("jdbc:hsqldb:file:src/main/resource/hsqldb; shutdown=true", "root",
+					"root");
 			Statement stmt = con.createStatement();
 
 			// Alle Kunden ausgeben
