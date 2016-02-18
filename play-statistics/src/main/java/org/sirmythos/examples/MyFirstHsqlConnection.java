@@ -40,6 +40,9 @@ public class MyFirstHsqlConnection {
 
 			// Statement schlieﬂen
 			stmt.close();
+			
+			// Connection beenden
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
