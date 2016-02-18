@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.sirmythos.examples.*;
 
 public class PalindromeTest {
 	

@@ -1,3 +1,5 @@
+package org.sirmythos.examples;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -18,7 +20,7 @@ public class MyFirstHsqlConnection {
 		Connection con = null;
 
 		try {
-			con = DriverManager.getConnection("jdbc:hsqldb:file:src/main/resource/hsqldb; shutdown=true", "root",
+			con = DriverManager.getConnection("jdbc:hsqldb:file:src/main/resource/database/hsqldb; shutdown=true", "root",
 					"root");
 			Statement stmt = con.createStatement();
 

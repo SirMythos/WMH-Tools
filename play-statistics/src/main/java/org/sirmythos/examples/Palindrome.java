@@ -1,3 +1,4 @@
+package org.sirmythos.examples;
 
 public class Palindrome {
 
