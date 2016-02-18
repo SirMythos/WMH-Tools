@@ -1,3 +1,4 @@
+package org.sirmythos.test.examples;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.sirmythos.examples.*;

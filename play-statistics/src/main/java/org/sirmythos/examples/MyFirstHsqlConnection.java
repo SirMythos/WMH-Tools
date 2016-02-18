@@ -20,7 +20,7 @@ public class MyFirstHsqlConnection {
 		Connection con = null;
 
 		try {
-			con = DriverManager.getConnection("jdbc:hsqldb:file:src/main/resource/database/hsqldb; shutdown=true", "root",
+			con = DriverManager.getConnection("jdbc:hsqldb:file:src/main/resources/database/hsqldb; shutdown=true", "root",
 					"root");
 			Statement stmt = con.createStatement();
 
@@ -41,7 +41,7 @@ public class MyFirstHsqlConnection {
 			// Statement schlieﬂen
 			stmt.close();
 			
-			// Connection beenden
+			// Connection schlieﬂen
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
