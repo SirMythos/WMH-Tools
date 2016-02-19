@@ -1,35 +1,32 @@
 package org.sirmythos.examples;
 
-import org.sirmythos.examples.VO_User;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-
 
 public class HibernateUtil {
+
 	private static SessionFactory sessionFactory;
 
 	static {
 		try {
-			// Create configuration for use
-			Configuration configuration = new Configuration();
-			configuration.addPackage("org.sirmythos.examples");
-			configuration.addAnnotatedClass(VO_User.class);
-			configuration.configure();
-			System.out.println("Configuration erstellt");
 
-			// Create the SessionFactory from hibernate.cfg.xml
-			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml")
-					.build();
-			System.out.println("Standard Registry erstellt");
+			// A SessionFactory is set up once for an application!
+			// configures settings from hibernate.cfg.xml
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+			;
+			try {
+				sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 
-			// Metadata metadata = new
-			// MetadataSources(standardRegistry).getMetadataBuilder().build();
-			// sessionFactory = metadata.getSessionFactoryBuilder().build();
-
-			sessionFactory = configuration.buildSessionFactory(standardRegistry);
-			// configuration.buildSessionFactory(serviceRegistry);
+			} catch (Exception e) {
+				// The registry would be destroyed by the SessionFactory, but we
+				// had trouble building the SessionFactory
+				// so destroy it manually.
+				System.out.println("ERROR bei Erstellung der Session Factory");
+				System.out.println(e.getMessage());
+				StandardServiceRegistryBuilder.destroy(registry);
+			}
 		} catch (RuntimeException ex) {
 			System.out.println(ex.getMessage());
 		}

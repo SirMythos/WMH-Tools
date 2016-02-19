@@ -21,7 +21,7 @@
  * 51 Franklin Street, Fifth Floor
  * Boston, MA  02110-1301  USA
  */
-package org.hibernate.test.tutorial.hbm;
+package org.hibernate.tutorial.annotations;
 
 import java.util.Date;
 import java.util.List;
@@ -31,23 +31,23 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.tutorial.hbm.Event;
 
 import junit.framework.TestCase;
 
 /**
- * Illustrates use of Hibernate native APIs.
+ * Illustrates the use of Hibernate native APIs.  The code here is unchanged from the {@code basic} example, the
+ * only difference being the use of annotations to supply the metadata instead of Hibernate mapping files.
  *
  * @author Steve Ebersole
  */
-public class NativeApiIllustrationTest extends TestCase {
+public class AnnotationsIllustrationTest extends TestCase {
 	private SessionFactory sessionFactory;
 
 	@Override
 	protected void setUp() throws Exception {
 		// A SessionFactory is set up once for an application!
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-				.configure() // configures settings from hibernate.cfg.xml
+				.configure("annotation-hibernate.cfg.xml") // configures settings from hibernate.cfg.xml
 				.build();
 		try {
 			sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
@@ -66,8 +66,8 @@ public class NativeApiIllustrationTest extends TestCase {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public void testBasicUsage() throws Exception {
+	@SuppressWarnings({ "unchecked" })
+	public void testBasicUsage() {
 		// create a couple of events...
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
