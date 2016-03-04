@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @SequenceGenerator(name = "factionID", initialValue = 1, allocationSize = 1)
-@Table(name = "FACTIONS", catalog = "PUBLIC")
+@Table(name = "FACTIONS")
 public class Faction {
 
 	// Variables
