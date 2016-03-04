@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class Faction.
@@ -16,8 +14,8 @@ import org.hibernate.annotations.GenericGenerator;
  * @author Lutz Kramer
  */
 @Entity
-@SequenceGenerator(name = "ID", initialValue = 1, allocationSize = 1)
-@Table(name = "FACTIONS")
+@SequenceGenerator(name = "factionID", initialValue = 1, allocationSize = 1)
+@Table(name = "FACTIONS", catalog = "PUBLIC")
 public class Faction {
 
 	// Variables
@@ -46,8 +44,7 @@ public class Faction {
 	 * @return The id in the Database
 	 */
 	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(generator = "factionID")
 	@Column(name = "ID", nullable = false, unique = true)
 	public int getID() {
 		return ID;
