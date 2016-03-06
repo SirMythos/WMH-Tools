@@ -23,7 +23,7 @@ public class Player {
 	// Variables
 
 	/** The id. */
-	private int ID;
+	private int id;
 
 	/** The name. */
 	private String name;
@@ -40,9 +40,8 @@ public class Player {
 	// Constructors
 
 	/**
-	 * Instantiates a new player.
+	 * Default-Constructor for database.
 	 */
-	// Default-Constructor for database
 	public Player() {
 		// leave empty for hibernate
 	}
@@ -58,7 +57,7 @@ public class Player {
 	@GeneratedValue(generator = "playerID")
 	@Column(name = "ID", nullable = false, unique = true)
 	public int getID() {
-		return ID;
+		return id;
 	}
 
 	/**
@@ -110,7 +109,7 @@ public class Player {
 	 *            the new id
 	 */
 	public void setID(int iD) {
-		ID = iD;
+		id = iD;
 	}
 
 	/**

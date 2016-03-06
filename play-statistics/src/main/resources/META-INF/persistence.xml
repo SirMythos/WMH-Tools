@@ -13,12 +13,32 @@
 
 		<class>de.sirmythos.playstatistic.dbobjects.Faction</class>
 		<class>de.sirmythos.playstatistic.dbobjects.Player</class>
+		<class>de.sirmythos.playstatistic.dbobjects.Caster</class>
 
 		<properties>
+			<!-- HSQLDB Connection Settings -->
+			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:hsqldb:file:src/main/resources/database/statisticdb;shutdown=true" />
+			<property name="javax.persistence.jdbc.user" value="statistic" />
+			<property name="javax.persistence.jdbc.password" value="statistic" />
+
+			<!-- HSQLDB Dialact -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+
+			<!-- Database update -->
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+
+			<!-- Handling SQL Statements -->
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- Settings for Transaction Factory and Current Sesseion -->
+			<property name="hibernate.transaction.factory_class"
+				value="org.hibernate.transaction.JDBCTransactionFactory" />
+			<property name="hibernate.current_session_context_class"
+				value="thread" />
+
 		</properties>
 
 	</persistence-unit>

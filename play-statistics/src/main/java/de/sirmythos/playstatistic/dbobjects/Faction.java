@@ -21,18 +21,18 @@ public class Faction {
 	// Variables
 
 	/** The id. */
-	private int ID;
+	private int id;
 
 	/** The Faction name. */
-	private String FactionName;
+	private String factionName;
 
 	/** The Faction short name. */
-	private String FactionShortName;
+	private String factionShortName;
 
 	// Constructors
 
 	/**
-	 * Default-Constructor for database
+	 * Default-Constructor for database.
 	 */
 	public Faction() {
 		// leave empty for hibernate
@@ -47,7 +47,7 @@ public class Faction {
 	@GeneratedValue(generator = "factionID")
 	@Column(name = "ID", nullable = false, unique = true)
 	public int getID() {
-		return ID;
+		return id;
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class Faction {
 	 */
 	@Column(name = "Faction")
 	public String getFactionName() {
-		return FactionName;
+		return factionName;
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class Faction {
 	 */
 	@Column(name = "FactionShort")
 	public String getFactionShortName() {
-		return FactionShortName;
+		return factionShortName;
 	}
 
 	// Setter
@@ -76,8 +76,8 @@ public class Faction {
 	 * @param Set
 	 *            A new id. Should never be used.
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int id) {
+		this.id = id;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class Faction {
 	 *            the new faction name
 	 */
 	public void setFactionName(String factionName) {
-		FactionName = factionName;
+		this.factionName = factionName;
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class Faction {
 	 *            the new faction short name
 	 */
 	public void setFactionShortName(String factionShortName) {
-		FactionShortName = factionShortName;
+		this.factionShortName = factionShortName;
 	}
 
 }
