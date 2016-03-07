@@ -61,7 +61,7 @@ public class DBHandler {
 	public static <T> void insertObject(T object) {
 		startManager();
 		manager.getTransaction().begin();
-		manager.persist(object);
+		manager.merge(object);
 		manager.getTransaction().commit();
 		closeManager();
 	}

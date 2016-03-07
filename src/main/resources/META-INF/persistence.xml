@@ -14,6 +14,7 @@
 		<class>de.sirmythos.playstatistic.dbobjects.Faction</class>
 		<class>de.sirmythos.playstatistic.dbobjects.Player</class>
 		<class>de.sirmythos.playstatistic.dbobjects.Caster</class>
+		<class>de.sirmythos.playstatistic.dbobjects.Szenario</class>
 
 		<properties>
 			<!-- HSQLDB Connection Settings -->
@@ -38,6 +39,7 @@
 				value="org.hibernate.transaction.JDBCTransactionFactory" />
 			<property name="hibernate.current_session_context_class"
 				value="thread" />
+			<property name="hibernate.enable_lazy_load_no_trans" value="false" />
 
 		</properties>
 

@@ -1,5 +1,6 @@
 package de.sirmythos.playstatistic.dbobjects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,10 +15,10 @@ import javax.persistence.Table;
 /**
  * The Class Caster.
  * 
- *  @author Lutz Kramer
+ * @author Lutz Kramer
  */
 @Entity
-@SequenceGenerator(name = "casterID", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "casterID", sequenceName = "casterID_sequence", initialValue = 1, allocationSize = 1)
 @Table(name = "CASTER")
 public class Caster {
 
@@ -83,8 +84,8 @@ public class Caster {
 	 *
 	 * @return the faction
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="Faction", nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "Faction", nullable = false)
 	public Faction getFaction() {
 		return faction;
 	}

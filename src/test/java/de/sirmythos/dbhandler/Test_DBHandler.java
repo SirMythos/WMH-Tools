@@ -5,6 +5,7 @@ import java.util.List;
 import de.sirmythos.playstatistic.dbobjects.Caster;
 import de.sirmythos.playstatistic.dbobjects.Faction;
 import de.sirmythos.playstatistic.dbobjects.Player;
+import de.sirmythos.playstatistic.dbobjects.Steamroller;
 
 public class Test_DBHandler {
 
@@ -20,16 +21,15 @@ public class Test_DBHandler {
 			System.out.println(p.getNickname());
 		}
 
-		Caster caster = new Caster();
-		caster.setCasterName("Commander Coleman Stryker");
-		caster.setCasterShortName("Stryker1");
-		caster.setFaction(listFaction.get(0));
-
-		DBHandler.insertObject(caster);
-
 		List<Caster> listCaster = DBHandler.getObjects(Caster.class);
 		for (Caster c : listCaster) {
 			System.out.println(c.getCasterName() + " (" + c.getFaction().getFactionName() + ")");
 		}
+
+		List<Steamroller> listSR = DBHandler.getObjects(Steamroller.class);
+		for (Steamroller sr : listSR) {
+			System.out.println(sr.getId() + " - " + sr.getSteamroller());
+		}
+
 	}
 }
