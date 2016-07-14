@@ -1,8 +1,5 @@
 package de.sirmythos.playstatistic.dbobjects;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
