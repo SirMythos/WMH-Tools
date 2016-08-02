@@ -4,80 +4,25 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>de.sirmythos</groupId>
-	<artifactId>wmh-tools</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>wmh-tournaments</artifactId>
+
+	<parent>
+		<groupId>de.sirmythos</groupId>
+		<artifactId>wmh-tools</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>${basedir}</relativePath>
+	</parent>
 
 	<!-- Output to jar format -->
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
-	<name>WMH-Tools</name>
+	<name>WMH-Tournaments</name>
 	<url>https://github.com/SirMythos/WMH-Tools</url>
-	<description>Software for Warmachine/Hordes</description>
-
-	<properties>
-		<jdk.version>1.8</jdk.version>
-		<MyDir>
-			${basedir}
-		</MyDir>
-	</properties>
-
-	<dependencies>
-
-		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>2.3.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.1.0.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.18</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.2.4.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.1.0.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-envers</artifactId>
-			<version>5.1.0.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-
-	</dependencies>
+	<description>Software for Tournament-Management in Warmachine/Hordes</description>
 
 	<build>
 
-		<finalName>wmh-tools-0.0.1-SNAPSHOT</finalName>
+		<finalName>wmh-tournament-0.0.1-SNAPSHOT</finalName>
 
 		<plugins>
 
@@ -99,8 +44,8 @@
 				<version>2.4</version>
 				<configuration>
 					<!-- Output Directory -->
-					<outputDirectory>${MyDir}/target</outputDirectory>
-					<!-- DO NOT include log4j.properties file in your jar -->
+					<outputDirectory>${MyDir}/../target</outputDirectory>
+					<!-- DO NOT include log4j.properties file in your Jar -->
 					<excludes>
 						<exclude>**/log4j.properties</exclude>
 					</excludes>
@@ -109,7 +54,7 @@
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
 							<!-- Jar file entry point -->
-							<mainClass>de.sirmythos.wmh_tools.starter.WMH_Tools</mainClass>
+							<mainClass>de.sirmythos.wmh_tournaments.starter.WMH_Tournaments</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -162,17 +107,13 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${MyDir}/target/lib</outputDirectory>
+							<outputDirectory>${MyDir}/../target/lib</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 
+
 		</plugins>
 	</build>
-
-	<modules>
-		<module>wmh-tournaments</module>
-	</modules>
-
 </project>
