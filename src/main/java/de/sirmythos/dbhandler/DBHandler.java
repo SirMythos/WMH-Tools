@@ -19,7 +19,7 @@ import javax.persistence.criteria.Root;
 public class DBHandler {
 
 	/** The Constant persistenzDescriptor. */
-	private final static String persistenzDescriptor = "de.sirmythos.dbhandler.jpa";
+	private final static String persistenzDescriptor = "de.sirmythos.database.staticdb";
 
 	/** The emf. */
 	private static EntityManagerFactory emf;
@@ -34,6 +34,19 @@ public class DBHandler {
 		// Erzeugen einer EntityManagerFactory mit Hilfe des symbolischen
 		// Namens aus dem Persistenz Descriptor (persistence.xml)
 		emf = Persistence.createEntityManagerFactory(persistenzDescriptor);
+		// Erzeugen eines EntityManagers für den Zugriff auf
+		// die Datenbank
+		manager = emf.createEntityManager();
+	}
+	
+	/**
+	 * Instantiates a new connection manager.
+	 */
+	@SuppressWarnings("unused")
+	private static void startManager(final String localPersistenzDescriptor) {
+		// Erzeugen einer EntityManagerFactory mit Hilfe des symbolischen
+		// Namens aus dem Persistenz Descriptor (persistence.xml)
+		emf = Persistence.createEntityManagerFactory(localPersistenzDescriptor);
 		// Erzeugen eines EntityManagers für den Zugriff auf
 		// die Datenbank
 		manager = emf.createEntityManager();

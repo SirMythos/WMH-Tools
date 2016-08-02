@@ -19,8 +19,8 @@
 		<MyDir>${basedir}</MyDir>
 		<jdk.version>1.8</jdk.version>
 	</properties>
-	
-		<dependencies>
+
+	<dependencies>
 
 		<dependency>
 			<groupId>org.hsqldb</groupId>
@@ -58,13 +58,13 @@
 			<version>3.0.0</version>
 		</dependency>
 
-	
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
-		</dependencies>
+	</dependencies>
 
 	<build>
 
@@ -89,8 +89,6 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<!-- Output Directory -->
-					<outputDirectory>${MyDir}/target/jar</outputDirectory>
 					<!-- DO NOT include log4j.properties file in your jar -->
 					<excludes>
 						<exclude>**/log4j.properties</exclude>
@@ -138,23 +136,6 @@
 						<goals>
 							<goal>testCompile</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Move module-output to parent-target-folder -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${MyDir}/target/lib</outputDirectory>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>

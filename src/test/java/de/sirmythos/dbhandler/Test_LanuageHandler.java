@@ -2,7 +2,7 @@ package de.sirmythos.dbhandler;
 
 import java.util.Locale;
 import de.sirmythos.language.LanguageHandler;
-import de.sirmythos.wmh_play_statistic.dbobjects.Faction;
+import de.sirmythos.wmh_tools.dbobjects.Faction;
 
 public class Test_LanuageHandler {
 
