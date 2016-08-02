@@ -4,7 +4,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>wmh-tournaments</artifactId>
+	<artifactId>play-statistics</artifactId>
 
 	<parent>
 		<groupId>de.sirmythos</groupId>
@@ -16,13 +16,13 @@
 	<!-- Output to jar format -->
 	<packaging>jar</packaging>
 
-	<name>WMH Tournaments</name>
+	<name>WMH Play-Statistics</name>
 	<url>https://github.com/SirMythos/WMH-Tools</url>
-	<description>Software for Tournament-Management in Warmachine/Hordes</description>
-
+	<description>Tool for Statistics in Warmachine/Hordes-Plays</description>
+	
 	<build>
 
-		<finalName>wmh-tournament-0.0.1-SNAPSHOT</finalName>
+		<finalName>wmh-play-statistics-0.0.1-SNAPSHOT</finalName>
 
 		<plugins>
 
@@ -54,7 +54,7 @@
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
 							<!-- Jar file entry point -->
-							<mainClass>de.sirmythos.wmh_tournaments.starter.WMH_Tournaments</mainClass>
+							<mainClass>de.sirmythos.wmh_play_statistic.starter.WMH_Play_Statistics</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

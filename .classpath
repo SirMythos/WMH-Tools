@@ -32,5 +32,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="/wmh-play-statistics"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/wmh-tournaments"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

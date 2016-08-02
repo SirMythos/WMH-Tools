@@ -5,4 +5,4 @@
  * @author lutz.kramer
  *
  */
-package de.sirmythos.playstatistic.dbobjects;
+package de.sirmythos.wmh_play_statistic.starter;

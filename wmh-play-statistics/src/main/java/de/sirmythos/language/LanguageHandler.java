@@ -1,9 +1,9 @@
-package de.sirmythos.playstatistic.languagepack;
+package de.sirmythos.language;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import de.sirmythos.playstatistic.dbobjects.Faction;
+import de.sirmythos.wmh_play_statistic.dbobjects.Faction;
 
 public class LanguageHandler {
 

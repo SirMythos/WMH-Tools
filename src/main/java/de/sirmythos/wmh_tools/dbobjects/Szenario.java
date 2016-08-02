@@ -1,4 +1,4 @@
-package de.sirmythos.playstatistic.dbobjects;
+package de.sirmythos.wmh_tools.dbobjects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

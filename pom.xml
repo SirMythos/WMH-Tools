@@ -16,13 +16,11 @@
 	<description>Software for Warmachine/Hordes</description>
 
 	<properties>
+		<MyDir>${basedir}</MyDir>
 		<jdk.version>1.8</jdk.version>
-		<MyDir>
-			${basedir}
-		</MyDir>
 	</properties>
-
-	<dependencies>
+	
+		<dependencies>
 
 		<dependency>
 			<groupId>org.hsqldb</groupId>
@@ -33,20 +31,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.1.0.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.18</version>
+			<version>5.2.1.Final</version>
 		</dependency>
 
 		<dependency>
@@ -58,13 +43,13 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.1.0.Final</version>
+			<version>5.2.1.Final</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-envers</artifactId>
-			<version>5.1.0.Final</version>
+			<version>5.2.1.Final</version>
 		</dependency>
 
 		<dependency>
@@ -73,7 +58,13 @@
 			<version>3.0.0</version>
 		</dependency>
 
-	</dependencies>
+	
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		</dependencies>
 
 	<build>
 
@@ -99,7 +90,7 @@
 				<version>2.4</version>
 				<configuration>
 					<!-- Output Directory -->
-					<outputDirectory>${MyDir}/target</outputDirectory>
+					<outputDirectory>${MyDir}/target/jar</outputDirectory>
 					<!-- DO NOT include log4j.properties file in your jar -->
 					<excludes>
 						<exclude>**/log4j.properties</exclude>
@@ -173,6 +164,7 @@
 
 	<modules>
 		<module>wmh-tournaments</module>
+		<module>wmh-play-statistics</module>
 	</modules>
 
 </project>

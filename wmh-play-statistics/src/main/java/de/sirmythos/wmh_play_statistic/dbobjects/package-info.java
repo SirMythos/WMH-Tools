@@ -5,4 +5,4 @@
  * @author lutz.kramer
  *
  */
-package de.sirmythos.playstatistic.languagepack;
+package de.sirmythos.wmh_play_statistic.dbobjects;

@@ -11,10 +11,10 @@
             Persistence unit for the play-statistic program
         </description>
 
-		<class>de.sirmythos.playstatistic.dbobjects.Faction</class>
-		<class>de.sirmythos.playstatistic.dbobjects.Player</class>
-		<class>de.sirmythos.playstatistic.dbobjects.Caster</class>
-		<class>de.sirmythos.playstatistic.dbobjects.Szenario</class>
+		<class>de.sirmythos.wmh_play_statistic.dbobjects.Faction</class>
+		<class>de.sirmythos.wmh_tools.dbobjects.Player</class>
+		<class>de.sirmythos.wmh_play_statistic.dbobjects.Caster</class>
+		<class>de.sirmythos.wmh_tools.dbobjects.Szenario</class>
 
 		<properties>
 			<!-- HSQLDB Connection Settings -->

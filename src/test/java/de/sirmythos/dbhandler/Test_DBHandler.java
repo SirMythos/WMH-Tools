@@ -3,8 +3,8 @@ package de.sirmythos.dbhandler;
 import java.util.List;
 import java.util.Locale;
 
-import de.sirmythos.playstatistic.dbobjects.Faction;
-import de.sirmythos.playstatistic.languagepack.LanguageHandler;
+import de.sirmythos.language.LanguageHandler;
+import de.sirmythos.wmh_play_statistic.dbobjects.Faction;
 
 public class Test_DBHandler {
 
