@@ -9,7 +9,7 @@ public class LoggerManager {
 
 	public static void setErrorLogToFile() {
 
-		File file = new File("WMH-Tools Error.log");
+		File file = new File("logs/WMH-Tools Error.log");
 
 		FileOutputStream fos = null;
 
@@ -32,7 +32,7 @@ public class LoggerManager {
 
 	public static void setSysOutToFile() {
 
-		File file = new File("WMH-Tools Error.log");
+		File file = new File("logs/WMH-Tools Error.log");
 
 		FileOutputStream fos = null;
 

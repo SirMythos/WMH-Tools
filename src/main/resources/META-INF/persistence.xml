@@ -10,8 +10,6 @@
 		<description>
             Persistence unit for the static database of this application
         </description>
-        
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<class>de.sirmythos.wmh_tools.dbobjects.Faction</class>
 		<class>de.sirmythos.wmh_tools.dbobjects.Player</class>
