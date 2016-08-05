@@ -1,8 +1,0 @@
-Aug 03, 2016 9:04:41 PM org.hibernate.jpa.boot.internal.PersistenceXmlParser doResolve
-INFO: HHH000318: Could not find any META-INF/persistence.xml file in the classpath
-Exception in thread "main" javax.persistence.PersistenceException: No Persistence provider for EntityManager named de.sirmythos.database.staticdb
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:61)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at de.sirmythos.dbhandler.DBHandler.startManager(DBHandler.java:36)
-	at de.sirmythos.dbhandler.DBHandler.getObjects(DBHandler.java:117)
-	at de.sirmythos.wmh_tools.starter.WMH_Tools.main(WMH_Tools.java:23)

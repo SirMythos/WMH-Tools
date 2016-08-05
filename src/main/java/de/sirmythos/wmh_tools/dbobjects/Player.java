@@ -1,3 +1,13 @@
+/*
+ * Project: WMH-Tools
+ * Package: de.sirmythos.wmh_tools.dbobjects
+ * File:	Player.java
+ *
+ * Date:	05.08.2016
+ * Time:	14:19:22
+ * 
+ * @author 	SirMythos
+ */
 package de.sirmythos.wmh_tools.dbobjects;
 
 import java.io.File;
@@ -150,6 +160,18 @@ public class Player {
 	 */
 	public void setPhoto(File photo) {
 		this.photo = photo;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+
+		return getName() + " \"" + getNickname() + "\" " + getSurname();
+
 	}
 
 }
