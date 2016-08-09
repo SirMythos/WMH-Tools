@@ -1,10 +1,8 @@
 package de.sirmythos.dbhandler;
 
-import java.util.List;
 import java.util.Locale;
 
-import de.sirmythos.language.LanguageHandler;
-import de.sirmythos.wmh_tools.dbobjects.Faction;
+import de.sirmythos.wmh_tools.dbobjects.Player;
 
 public class Test_DBHandler {
 
@@ -13,12 +11,14 @@ public class Test_DBHandler {
 		Locale locale = Locale.ENGLISH;
 		Locale locale2 = Locale.GERMAN;
 
-		List<Faction> listFaction = DBHandler.getObjects(Faction.class);
-		for (Faction f : listFaction) {
-			String t1 = LanguageHandler.translate(locale, f.getClass(), f.getFactionName());
-			String t2 = LanguageHandler.translate(locale2, f.getClass(), f.getFactionName());
-			System.out.println(t1 + " / " + t2);
-		}
+		// List<Faction> listFaction = DBHandler.getObjects(Faction.class);
+		// for (Faction f : listFaction) {
+		// String t1 = LanguageHandler.translate(locale, f.getClass(),
+		// f.getFactionName());
+		// String t2 = LanguageHandler.translate(locale2, f.getClass(),
+		// f.getFactionName());
+		// System.out.println(t1 + " / " + t2);
+		// }
 
 		// List<Player> listPlayer = DBHandler.getObjects(Player.class);
 		// for (Player p : listPlayer) {

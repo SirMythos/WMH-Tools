@@ -38,7 +38,7 @@ public class DBHandler {
 		// die Datenbank
 		manager = emf.createEntityManager();
 	}
-	
+
 	/**
 	 * Instantiates a new connection manager.
 	 */
@@ -74,9 +74,10 @@ public class DBHandler {
 	public static <T> void insertObject(T object) {
 		startManager();
 		manager.getTransaction().begin();
-		manager.merge(object);
+		manager.persist(object);
 		manager.getTransaction().commit();
 		closeManager();
+
 	}
 
 	/**
