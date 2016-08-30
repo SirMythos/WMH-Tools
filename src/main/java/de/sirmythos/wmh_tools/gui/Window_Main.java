@@ -143,6 +143,17 @@ public class Window_Main extends JFrame {
 
 		JMenuItem mntmNewList = new JMenuItem("New List");
 		mnLists.add(mntmNewList);
+		
+		JMenu mnGames = new JMenu("Games");
+		menuBar.add(mnGames);
+		
+		JMenuItem mntmNewGame = new JMenuItem("New Game");
+		mntmNewGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Handler_Window_Main.newGame(Window_Main.this);
+			}
+		});
+		mnGames.add(mntmNewGame);
 
 		JMenu mnOptions = new JMenu("Options");
 		menuBar.add(mnOptions);

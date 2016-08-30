@@ -15,7 +15,6 @@ import java.io.File;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -27,14 +26,14 @@ import javax.persistence.Table;
  * @author Lutz Kramer
  */
 @Entity
-@SequenceGenerator(name = "playerID", sequenceName = "playerID_sequence", initialValue = 1, allocationSize = 2)
+@SequenceGenerator(name = "playerID", sequenceName = "playerID_sequence", initialValue = 1, allocationSize = 1)
 @Table(name = "PLAYERS")
-public class Player {
+public class Player{
 
 	// Variables
 
 	/** The id. */
-	private int id;
+	private int id = 1;
 
 	/** The name. */
 	private String name;
@@ -53,7 +52,7 @@ public class Player {
 	/**
 	 * Default-Constructor for database.
 	 */
-	public Player() {
+	public Player(){
 		// leave empty for hibernate
 	}
 
@@ -66,7 +65,6 @@ public class Player {
 	 */
 	@Id
 	@GeneratedValue(generator = "playerID")
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name = "ID", nullable = false, unique = true)
 	public int getID() {
 		return id;
@@ -107,7 +105,8 @@ public class Player {
 	 *
 	 * @return the photo
 	 */
-	@Column(name = "Photo", nullable = true)
+	//@Column(name = "Photo", nullable = true)
+	@Column(name = "Photo")
 	public File getPhoto() {
 		return photo;
 	}

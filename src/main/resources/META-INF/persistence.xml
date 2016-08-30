@@ -31,8 +31,8 @@
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 
 			<!-- Handling SQL Statements -->
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
 
 			<!-- Settings for Transaction Factory and Current Sesseion -->
 			<property name="hibernate.transaction.factory_class"

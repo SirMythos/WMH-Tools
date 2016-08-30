@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -64,6 +65,35 @@ public class DBHandler {
 	}
 
 	/**
+	 * Creates a new object for the Database
+	 * 
+	 * @param <T>
+	 *            The class of the entity to identify the classtype.
+	 * @param entityClass
+	 *            The classtype of the entity to identify the database.
+	 * @return The newly createt object.
+	 */
+	@SuppressWarnings("finally")
+	public static <T> T createObject(Class<T> entityClass) {
+		T result = null;
+		startManager();
+		manager.getTransaction().begin();
+		try {
+			result = entityClass.newInstance();
+		} catch (InstantiationException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = null;
+		} finally {
+			manager.flush();
+			manager.getTransaction().commit();
+			closeManager();
+			return result;
+		}
+
+	}
+
+	/**
 	 * Insert a new object to the database.
 	 *
 	 * @param <T>
@@ -71,12 +101,13 @@ public class DBHandler {
 	 * @param object
 	 *            The object that sould be insert into the database.
 	 */
-	public static <T> void insertObject(T object) {
+	public static <T> T insertObject(T object) {
 		startManager();
 		manager.getTransaction().begin();
 		manager.persist(object);
 		manager.getTransaction().commit();
 		closeManager();
+		return object;
 
 	}
 
@@ -96,7 +127,11 @@ public class DBHandler {
 	 */
 	public static <T> T getObject(Class<T> entityClass, int id) {
 		startManager();
+		EntityTransaction trans = manager.getTransaction();
 		T result = manager.find(entityClass, id);
+		trans.begin();
+		manager.flush();
+		trans.commit();
 		closeManager();
 		return result;
 

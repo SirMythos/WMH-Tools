@@ -101,9 +101,22 @@ public class Panel_Player extends JPanel {
 		JButton btnSortByName = new JButton("Sort by Name");
 		btnSortByName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnEditPlayer.setEnabled(false);
+				Player tempPlayer = (Player) playerList.getSelectedValue();
 				sort = PlayerSort.NAME;
 				players = Handler_Player.loadPlayers(sort);
 				playerList.setListData(players);
+				player = tempPlayer;
+				if (player != null) {
+					for (Player p : players) {
+						if (p.getID() == player.getID()) {
+							player = p;
+							btnEditPlayer.setEnabled(true);
+							break;
+						}
+					}
+					playerList.setSelectedValue(player, true);
+				}
 			}
 		});
 		panelSort.add(btnSortByName);
@@ -111,9 +124,22 @@ public class Panel_Player extends JPanel {
 		JButton btnSortByNick = new JButton("Sort by Nickname");
 		btnSortByNick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnEditPlayer.setEnabled(false);
+				Player tempPlayer = (Player) playerList.getSelectedValue();
 				sort = PlayerSort.NICKNAME;
 				players = Handler_Player.loadPlayers(sort);
 				playerList.setListData(players);
+				player = tempPlayer;
+				if (player != null) {
+					for (Player p : players) {
+						if (p.getID() == player.getID()) {
+							player = p;
+							btnEditPlayer.setEnabled(true);
+							break;
+						}
+					}
+					playerList.setSelectedValue(player, true);
+				}
 			}
 		});
 		panelSort.add(btnSortByNick);
@@ -121,10 +147,22 @@ public class Panel_Player extends JPanel {
 		JButton btnSortBySurname = new JButton("Sort by Surname");
 		btnSortBySurname.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnEditPlayer.setEnabled(false);
+				Player tempPlayer = (Player) playerList.getSelectedValue();
 				sort = PlayerSort.SURNAME;
 				players = Handler_Player.loadPlayers(sort);
 				playerList.setListData(players);
-
+				player = tempPlayer;
+				if (player != null) {
+					for (Player p : players) {
+						if (p.getID() == player.getID()) {
+							player = p;
+							btnEditPlayer.setEnabled(true);
+							break;
+						}
+					}
+					playerList.setSelectedValue(player, true);
+				}
 			}
 		});
 		panelSort.add(btnSortBySurname);
@@ -135,8 +173,8 @@ public class Panel_Player extends JPanel {
 		panelDetails.setBorder(null);
 		panelDetails.setPreferredSize(new Dimension(350, 100));
 		GridBagLayout gbl_panelDetails = new GridBagLayout();
-		gbl_panelDetails.columnWidths = new int[] {75, 250};
-		gbl_panelDetails.rowHeights = new int[] {300, 30, 30, 30};
+		gbl_panelDetails.columnWidths = new int[] { 75, 250 };
+		gbl_panelDetails.rowHeights = new int[] { 300, 30, 30, 30 };
 		gbl_panelDetails.columnWeights = new double[] { 0.0, 1.0 };
 		gbl_panelDetails.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0 };
 		panelDetails.setLayout(gbl_panelDetails);
@@ -205,16 +243,20 @@ public class Panel_Player extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				btnEditPlayer.setEnabled(false);
 				player = Handler_Player.createPlayer(owner);
+				Player tempPlayer = player;
 				players = Handler_Player.loadPlayers(sort);
 				playerList.setListData(players);
-				for (Player p : players) {
-					if (p.getID() == player.getID()) {
-						player = p;
-						btnEditPlayer.setEnabled(true);
-						break;
+				player = tempPlayer;
+				if (player != null) {
+					for (Player p : players) {
+						if (p.getID() == player.getID()) {
+							player = p;
+							btnEditPlayer.setEnabled(true);
+							break;
+						}
 					}
+					playerList.setSelectedValue(player, true);
 				}
-				playerList.setSelectedValue(player, true);
 				updateDetailsPanel();
 
 			}
@@ -223,10 +265,12 @@ public class Panel_Player extends JPanel {
 	}
 
 	private void updateDetailsPanel() {
-		lblVarName.setText(player.getName() + " " + player.getSurname());
-		lblVarNickname.setText(player.getNickname());
+		if (player != null) {
+			lblVarName.setText(player.getName() + " " + player.getSurname());
+			lblVarNickname.setText(player.getNickname());
+		}
 		playerList.update(playerList.getGraphics());
-		
+
 	}
 
 }

@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import de.sirmythos.wmh_tools.dbobjects.Player;
+import de.sirmythos.wmh_tools.handler.Handler_Player;
 
 public class Dialog_EditPlayer extends JDialog {
 
@@ -36,7 +37,7 @@ public class Dialog_EditPlayer extends JDialog {
 		super(f, true);
 		playerData  = p;
 		if (p == null){
-			p = new Player();
+			p = Handler_Player.createNewPlayerObject();
 		}
 		setPreferredSize(new Dimension(600, 800));
 		setName("Edit_Player_Dialog");

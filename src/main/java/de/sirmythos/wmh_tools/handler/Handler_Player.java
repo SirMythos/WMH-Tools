@@ -1,5 +1,6 @@
 package de.sirmythos.wmh_tools.handler;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -13,8 +14,9 @@ public class Handler_Player {
 
 	public static Player createPlayer(JFrame f) {
 		Player p = callPlayerDialog(f, "New Player", null);
-		System.out.println(p.getID() + " - " + p.getNickname());
-		DBHandler.insertObject(p);
+		if (p != null) {
+			p = DBHandler.insertObject(p);
+		}
 		return p;
 	}
 
@@ -34,9 +36,18 @@ public class Handler_Player {
 		Player[] players = new Player[listPlayer.size()];
 		for (int i = 0; i < players.length; i++) {
 			players[i] = listPlayer.get(i);
-			System.out.println(players[i].getID() + " - " + players[i].getNickname());
 		}
-		// TODO Sortierung implementieren
+		switch (sort) {
+		case NAME:
+			Arrays.sort(players, (a, b) -> a.getName().compareToIgnoreCase(b.getName()));
+			break;
+		case NICKNAME:
+			Arrays.sort(players, (a, b) -> a.getNickname().compareToIgnoreCase(b.getNickname()));
+			break;
+		case SURNAME:
+			Arrays.sort(players, (a, b) -> a.getSurname().compareToIgnoreCase(b.getSurname()));
+			break;
+		}
 		return players;
 	}
 
@@ -46,6 +57,10 @@ public class Handler_Player {
 		p = dialog.getPlayerData();
 		dialog.dispose();
 		return p;
+	}
+
+	public static Player createNewPlayerObject() {
+		return DBHandler.createObject(Player.class);
 	}
 
 }
