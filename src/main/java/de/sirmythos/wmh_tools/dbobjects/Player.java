@@ -28,7 +28,7 @@ import javax.persistence.Table;
 @Entity
 @SequenceGenerator(name = "playerID", sequenceName = "playerID_sequence", initialValue = 1, allocationSize = 1)
 @Table(name = "PLAYERS")
-public class Player{
+public class Player {
 
 	// Variables
 
@@ -52,7 +52,7 @@ public class Player{
 	/**
 	 * Default-Constructor for database.
 	 */
-	public Player(){
+	public Player() {
 		// leave empty for hibernate
 	}
 
@@ -105,7 +105,6 @@ public class Player{
 	 *
 	 * @return the photo
 	 */
-	//@Column(name = "Photo", nullable = true)
 	@Column(name = "Photo")
 	public File getPhoto() {
 		return photo;

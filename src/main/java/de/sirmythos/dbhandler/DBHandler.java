@@ -20,7 +20,7 @@ import javax.persistence.criteria.Root;
 public class DBHandler {
 
 	/** The Constant persistenzDescriptor. */
-	private final static String persistenzDescriptor = "de.sirmythos.database.staticdb";
+	private final static String persistenzDescriptor = "de.sirmythos.database.dynamicDB";
 
 	/** The emf. */
 	private static EntityManagerFactory emf;

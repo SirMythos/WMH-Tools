@@ -35,14 +35,15 @@ public class Dialog_EditPlayer extends JDialog {
 
 	public Dialog_EditPlayer(JFrame f, String title, Player p) {
 		super(f, true);
-		playerData  = p;
-		if (p == null){
+		playerData = p;
+		if (p == null) {
+			
 			p = Handler_Player.createNewPlayerObject();
 		}
 		setPreferredSize(new Dimension(600, 800));
 		setName("Edit_Player_Dialog");
 		getContentPane().setName("contentPane");
-	
+
 		setTitle(title);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -52,7 +53,7 @@ public class Dialog_EditPlayer extends JDialog {
 			getContentPane().add(panelMain, BorderLayout.CENTER);
 			GridBagLayout gbl_panelMain = new GridBagLayout();
 			gbl_panelMain.rowHeights = new int[] { 350, 40, 40, 40 };
-			gbl_panelMain.columnWidths = new int[] {100, 480};
+			gbl_panelMain.columnWidths = new int[] { 100, 480 };
 			gbl_panelMain.columnWeights = new double[] { 1.0 };
 			gbl_panelMain.rowWeights = new double[] { 1.0, 0.0 };
 			panelMain.setLayout(gbl_panelMain);
@@ -64,7 +65,7 @@ public class Dialog_EditPlayer extends JDialog {
 			gbc_panelPicture.fill = GridBagConstraints.BOTH;
 			gbc_panelPicture.gridx = 0;
 			gbc_panelPicture.gridy = 0;
-			//TODO Picture auslesen implementieren
+			// TODO Picture auslesen implementieren
 			panelMain.add(panelPicture, gbc_panelPicture);
 			GridBagLayout gbl_panelPicture = new GridBagLayout();
 			gbl_panelPicture.columnWidths = new int[] { 300 };
@@ -177,17 +178,18 @@ public class Dialog_EditPlayer extends JDialog {
 		}
 
 		public void actionPerformed(ActionEvent ae) {
-			//TODO Foto-Speicherung implementieren
-			if (playerData == null){
+			// TODO Foto-Speicherung implementieren
+			if (playerData == null) {
 				playerData = new Player();
 			}
 			playerData.setNickname(textFieldNickname.getText());
 			playerData.setName(textFieldName.getText());
 			playerData.setSurname(textFieldSurname.getText());
 			dispose();
+
 		}
 	}
-	
+
 	@SuppressWarnings("serial")
 	private class DissmissAction extends AbstractAction {
 
@@ -196,8 +198,9 @@ public class Dialog_EditPlayer extends JDialog {
 		}
 
 		public void actionPerformed(ActionEvent ae) {
-			System.out.println("Dissmiss");
+
 			dispose();
+
 		}
 	}
 

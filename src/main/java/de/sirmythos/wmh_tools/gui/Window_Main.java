@@ -12,7 +12,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
-import de.sirmythos.wmh_tools.handler.Handler_Window_Main;
+import de.sirmythos.wmh_tools.threads.Thread_Window_Main;
+
 import java.awt.Dimension;
 
 public class Window_Main extends JFrame {
@@ -72,7 +73,7 @@ public class Window_Main extends JFrame {
 		JMenuItem mntmList = new JMenuItem("List");
 		mntmList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Handler_Window_Main.newList(Window_Main.this);
+				Thread_Window_Main.newList(Window_Main.this);
 			}
 		});
 		mnCreateNew.add(mntmList);
@@ -80,7 +81,7 @@ public class Window_Main extends JFrame {
 		JMenuItem mntmPlayer = new JMenuItem("Player");
 		mntmPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Handler_Window_Main.newPlayer(Window_Main.this);
+				Thread_Window_Main.newPlayer(Window_Main.this);
 			}
 		});
 		mnCreateNew.add(mntmPlayer);
@@ -88,7 +89,7 @@ public class Window_Main extends JFrame {
 		JMenuItem mntmTournament = new JMenuItem("Tournament");
 		mntmTournament.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Handler_Window_Main.newTournament(Window_Main.this);
+				Thread_Window_Main.newTournament(Window_Main.this);
 			}
 		});
 		mnCreateNew.add(mntmTournament);
@@ -96,53 +97,12 @@ public class Window_Main extends JFrame {
 		JSeparator separator = new JSeparator();
 		mnMain.add(separator);
 		mnMain.add(mntmQuit);
-
-		JMenu mnPlayer = new JMenu("Players");
-		menuBar.add(mnPlayer);
-
-		JMenuItem mntmCreateNewPlayer = new JMenuItem("New Player");
-		mntmCreateNewPlayer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Handler_Window_Main.newPlayer(Window_Main.this);
-			}
-		});
-		mnPlayer.add(mntmCreateNewPlayer);
-
-		JMenuItem mntmViewPlayerlist = new JMenuItem("Organzise Players");
-		mntmViewPlayerlist.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				getContentPane().setVisible(false);
-				int width = getContentPane().getWidth();
-				int height = getContentPane().getHeight();
-				JPanel panel = Handler_Window_Main.getPlayerPanel(Window_Main.this);
-				panel.setSize(width, height);
-				setContentPane(panel);
-				getContentPane().update(getContentPane().getGraphics());
-				getContentPane().setVisible(true);
-
-			}
-
-		});
-		mnPlayer.add(mntmViewPlayerlist);
-
-		JMenu mnTournament = new JMenu("Tournaments");
-		menuBar.add(mnTournament);
-
-		JMenuItem mntmNewTournament = new JMenuItem("New Tournament");
-		mntmNewTournament.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Handler_Window_Main.newTournament(Window_Main.this);
-			}
-		});
-		mnTournament.add(mntmNewTournament);
-
-		JMenu mnLists = new JMenu("Lists");
-		menuBar.add(mnLists);
-
-		JMenuItem mntmNewList = new JMenuItem("New List");
-		mnLists.add(mntmNewList);
+		
+				JMenu mnLists = new JMenu("Lists");
+				menuBar.add(mnLists);
+				
+						JMenuItem mntmNewList = new JMenuItem("New List");
+						mnLists.add(mntmNewList);
 		
 		JMenu mnGames = new JMenu("Games");
 		menuBar.add(mnGames);
@@ -150,10 +110,51 @@ public class Window_Main extends JFrame {
 		JMenuItem mntmNewGame = new JMenuItem("New Game");
 		mntmNewGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Handler_Window_Main.newGame(Window_Main.this);
+				Thread_Window_Main.newGame(Window_Main.this);
 			}
 		});
 		mnGames.add(mntmNewGame);
+
+		JMenu mnTournament = new JMenu("Tournaments");
+		menuBar.add(mnTournament);
+
+		JMenuItem mntmNewTournament = new JMenuItem("New Tournament");
+		mntmNewTournament.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Thread_Window_Main.newTournament(Window_Main.this);
+			}
+		});
+		mnTournament.add(mntmNewTournament);
+		
+				JMenu mnPlayer = new JMenu("Players");
+				menuBar.add(mnPlayer);
+				
+						JMenuItem mntmCreateNewPlayer = new JMenuItem("New Player");
+						mntmCreateNewPlayer.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								Thread_Window_Main.newPlayer(Window_Main.this);
+							}
+						});
+						mnPlayer.add(mntmCreateNewPlayer);
+						
+								JMenuItem mntmViewPlayerlist = new JMenuItem("Organzise Players");
+								mntmViewPlayerlist.addActionListener(new ActionListener() {
+
+									@Override
+									public void actionPerformed(ActionEvent e) {
+										getContentPane().setVisible(false);
+										int width = getContentPane().getWidth();
+										int height = getContentPane().getHeight();
+										JPanel panel = Thread_Window_Main.getPlayerPanel(Window_Main.this);
+										panel.setSize(width, height);
+										setContentPane(panel);
+										getContentPane().update(getContentPane().getGraphics());
+										getContentPane().setVisible(true);
+
+									}
+
+								});
+								mnPlayer.add(mntmViewPlayerlist);
 
 		JMenu mnOptions = new JMenu("Options");
 		menuBar.add(mnOptions);

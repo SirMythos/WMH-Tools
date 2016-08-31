@@ -1,6 +1,6 @@
 package de.sirmythos.wmh_tools.enums;
 
-public enum WinningCondidtion {
+public enum VictoryCondition {
 	
 	ASSASINATION, 
 	SCENARIO, 

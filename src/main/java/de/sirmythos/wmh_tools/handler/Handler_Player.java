@@ -42,6 +42,7 @@ public class Handler_Player {
 			Arrays.sort(players, (a, b) -> a.getName().compareToIgnoreCase(b.getName()));
 			break;
 		case NICKNAME:
+
 			Arrays.sort(players, (a, b) -> a.getNickname().compareToIgnoreCase(b.getNickname()));
 			break;
 		case SURNAME:

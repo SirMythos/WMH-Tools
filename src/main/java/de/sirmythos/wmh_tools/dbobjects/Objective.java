@@ -1,14 +1,16 @@
 /*
  * Project: WMH-Tools
  * Package: de.sirmythos.wmh_tools.dbobjects
- * File:	Scenario.java
+ * File:	Objective.java
  *
  * Date:	31.08.2016
- * Time:	10:48:44
+ * Time:	10:48:16
  * 
  * @author 	SirMythos
  */
 package de.sirmythos.wmh_tools.dbobjects;
+
+import java.io.File;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,36 +21,35 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import de.sirmythos.wmh_tools.enums.RuleEnviroment;
-
 // TODO: Auto-generated Javadoc
+
 /**
- * The Class Scenario.
+ * The Class Objective.
  */
 @Entity
-@SequenceGenerator(name = "scenarioID", sequenceName = "scenarioID_sequence", initialValue = 1, allocationSize = 1)
-@Table(name = "SCENARIO")
-public class Scenario {
+@SequenceGenerator(name = "objectiveID", sequenceName = "objectiveID_sequence", initialValue = 1, allocationSize = 1)
+@Table(name = "OBJECTIVE")
+public class Objective {
 
 	// Variables
-
 	/** The id. */
 	private int id;
 
 	/** The name. */
 	private String name;
 
-	/** The type. */
-	private RuleEnviroment type;
+	/** The rules. */
+	private RuleEnviroment rules;
 
-	/** The kill box. */
-	private boolean killBox;
+	/** The card. */
+	private File card;
 
-	// Constructors
+	// Constructor
 
 	/**
-	 * Instantiates a new scenario.
+	 * Instantiates a new objective.
 	 */
-	public Scenario() {
+	public Objective() {
 		// leave empty for hibernate
 	}
 
@@ -60,7 +61,7 @@ public class Scenario {
 	 * @return the id
 	 */
 	@Id
-	@GeneratedValue(generator = "scenarioID")
+	@GeneratedValue(generator = "objectiveID")
 	@Column(name = "ID", nullable = false, unique = true)
 	public int getId() {
 		return id;
@@ -71,29 +72,29 @@ public class Scenario {
 	 *
 	 * @return the name
 	 */
-	@Column(name = "Name")
+	@Column(name = "ObjectiveName")
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Gets the scenario type.
+	 * Gets the rules.
 	 *
-	 * @return the steamroller
+	 * @return the rules
 	 */
 	@JoinColumn(name = "RuleEnviroment", nullable = false)
-	public RuleEnviroment getType() {
-		return type;
+	public RuleEnviroment getRules() {
+		return rules;
 	}
 
 	/**
-	 * Checks if is kill box.
+	 * Gets the card.
 	 *
-	 * @return true, if is kill box
+	 * @return the card
 	 */
-	@JoinColumn(name = "KillBox", nullable = false)
-	public boolean isKillBox() {
-		return killBox;
+	@JoinColumn(name = "CardImage")
+	public File getCard() {
+		return card;
 	}
 
 	// Setter
@@ -119,23 +120,23 @@ public class Scenario {
 	}
 
 	/**
-	 * Sets the steamroller.
+	 * Sets the rules.
 	 *
-	 * @param scenarioType
-	 *            the scenarioType to set
+	 * @param rules
+	 *            the rules to set
 	 */
-	public void setType(RuleEnviroment scenarioType) {
-		this.type = scenarioType;
+	public void setRules(RuleEnviroment rules) {
+		this.rules = rules;
 	}
 
 	/**
-	 * Sets the kill box.
+	 * Sets the card.
 	 *
-	 * @param killBox
-	 *            the new kill box
+	 * @param card
+	 *            the card to set
 	 */
-	public void setKillBox(boolean killBox) {
-		this.killBox = killBox;
+	public void setCard(File card) {
+		this.card = card;
 	}
 
 }
