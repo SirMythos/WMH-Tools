@@ -3,8 +3,8 @@
  * Package: de.sirmythos.wmh_tools.dbobjects
  * File:	Scenario.java
  *
- * Date:	31.08.2016
- * Time:	10:48:44
+ * Date:	02.09.2016
+ * Time:	11:33:18
  * 
  * @author 	SirMythos
  */
@@ -38,7 +38,7 @@ public class Scenario {
 	private String name;
 
 	/** The type. */
-	private RuleEnviroment type;
+	private RuleEnviroment rules;
 
 	/** The kill box. */
 	private boolean killBox;
@@ -77,13 +77,12 @@ public class Scenario {
 	}
 
 	/**
-	 * Gets the scenario type.
+	 * Gets the type.
 	 *
-	 * @return the steamroller
+	 * @return the rules
 	 */
-	@JoinColumn(name = "RuleEnviroment", nullable = false)
-	public RuleEnviroment getType() {
-		return type;
+	public RuleEnviroment getRules() {
+		return rules;
 	}
 
 	/**
@@ -119,13 +118,13 @@ public class Scenario {
 	}
 
 	/**
-	 * Sets the steamroller.
+	 * Sets the type.
 	 *
-	 * @param scenarioType
-	 *            the scenarioType to set
+	 * @param rules
+	 *            the rules to set
 	 */
-	public void setType(RuleEnviroment scenarioType) {
-		this.type = scenarioType;
+	public void setRules(RuleEnviroment rules) {
+		this.rules = rules;
 	}
 
 	/**

@@ -2,8 +2,6 @@ package de.sirmythos.dbhandler;
 
 import java.util.Locale;
 
-import de.sirmythos.wmh_tools.dbobjects.Player;
-
 public class Test_DBHandler {
 
 	public static void main(String[] args) {

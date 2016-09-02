@@ -12,11 +12,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
-import de.sirmythos.wmh_tools.threads.Thread_Window_Main;
+import de.sirmythos.wmh_tools.handler.Handler_MainWindow;
 
 import java.awt.Dimension;
 
-public class Window_Main extends JFrame {
+public class Window_MainWindow extends JFrame {
 
 	/**
 	 * 
@@ -30,7 +30,7 @@ public class Window_Main extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Window_Main frame = new Window_Main();
+					Window_MainWindow frame = new Window_MainWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class Window_Main extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Window_Main() {
+	public Window_MainWindow() {
 		setMinimumSize(new Dimension(800, 600));
 		setPreferredSize(new Dimension(800, 600));
 		setName("MainWindow");
@@ -73,7 +73,7 @@ public class Window_Main extends JFrame {
 		JMenuItem mntmList = new JMenuItem("List");
 		mntmList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread_Window_Main.newList(Window_Main.this);
+				Handler_MainWindow.newList(Window_MainWindow.this);
 			}
 		});
 		mnCreateNew.add(mntmList);
@@ -81,7 +81,7 @@ public class Window_Main extends JFrame {
 		JMenuItem mntmPlayer = new JMenuItem("Player");
 		mntmPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread_Window_Main.newPlayer(Window_Main.this);
+				Handler_MainWindow.newPlayer(Window_MainWindow.this);
 			}
 		});
 		mnCreateNew.add(mntmPlayer);
@@ -89,7 +89,7 @@ public class Window_Main extends JFrame {
 		JMenuItem mntmTournament = new JMenuItem("Tournament");
 		mntmTournament.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread_Window_Main.newTournament(Window_Main.this);
+				Handler_MainWindow.newTournament(Window_MainWindow.this);
 			}
 		});
 		mnCreateNew.add(mntmTournament);
@@ -110,7 +110,7 @@ public class Window_Main extends JFrame {
 		JMenuItem mntmNewGame = new JMenuItem("New Game");
 		mntmNewGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread_Window_Main.newGame(Window_Main.this);
+				Handler_MainWindow.newGame(Window_MainWindow.this);
 			}
 		});
 		mnGames.add(mntmNewGame);
@@ -121,7 +121,7 @@ public class Window_Main extends JFrame {
 		JMenuItem mntmNewTournament = new JMenuItem("New Tournament");
 		mntmNewTournament.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread_Window_Main.newTournament(Window_Main.this);
+				Handler_MainWindow.newTournament(Window_MainWindow.this);
 			}
 		});
 		mnTournament.add(mntmNewTournament);
@@ -132,7 +132,7 @@ public class Window_Main extends JFrame {
 						JMenuItem mntmCreateNewPlayer = new JMenuItem("New Player");
 						mntmCreateNewPlayer.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
-								Thread_Window_Main.newPlayer(Window_Main.this);
+								Handler_MainWindow.newPlayer(Window_MainWindow.this);
 							}
 						});
 						mnPlayer.add(mntmCreateNewPlayer);
@@ -145,7 +145,7 @@ public class Window_Main extends JFrame {
 										getContentPane().setVisible(false);
 										int width = getContentPane().getWidth();
 										int height = getContentPane().getHeight();
-										JPanel panel = Thread_Window_Main.getPlayerPanel(Window_Main.this);
+										JPanel panel = Handler_MainWindow.getPlayerPanel(Window_MainWindow.this);
 										panel.setSize(width, height);
 										setContentPane(panel);
 										getContentPane().update(getContentPane().getGraphics());

@@ -37,7 +37,7 @@ public class Dialog_EditPlayer extends JDialog {
 		super(f, true);
 		playerData = p;
 		if (p == null) {
-			
+
 			p = Handler_Player.createNewPlayerObject();
 		}
 		setPreferredSize(new Dimension(600, 800));

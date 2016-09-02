@@ -3,8 +3,8 @@
  * Package: de.sirmythos.wmh_tools.dbobjects
  * File:	ArmyList.java
  *
- * Date:	31.08.2016
- * Time:	10:59:35
+ * Date:	02.09.2016
+ * Time:	11:03:57
  * 
  * @author 	SirMythos
  */
@@ -34,6 +34,9 @@ public class ArmyList {
 
 	/** The id. */
 	private int id;
+
+	/** The name. */
+	private String name;
 
 	/** The caster. */
 	private Caster caster;
@@ -65,6 +68,16 @@ public class ArmyList {
 	@Column(name = "ID", nullable = false, unique = true)
 	public int getId() {
 		return id;
+	}
+
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
+	@Column(name = "Name", nullable = false)
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -109,6 +122,16 @@ public class ArmyList {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * Sets the name.
+	 *
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**

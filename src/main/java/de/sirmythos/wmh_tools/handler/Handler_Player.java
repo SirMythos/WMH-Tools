@@ -1,3 +1,13 @@
+/*
+ * Project: WMH-Tools
+ * Package: de.sirmythos.wmh_tools.handler
+ * File:	Handler_Player.java
+ *
+ * Date:	02.09.2016
+ * Time:	11:40:50
+ * 
+ * @author 	SirMythos
+ */
 package de.sirmythos.wmh_tools.handler;
 
 import java.util.Arrays;
@@ -10,8 +20,19 @@ import de.sirmythos.wmh_tools.dbobjects.Player;
 import de.sirmythos.wmh_tools.enums.PlayerSort;
 import de.sirmythos.wmh_tools.gui.Dialog_EditPlayer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Handler_Player.
+ */
 public class Handler_Player {
 
+	/**
+	 * Creates the player.
+	 *
+	 * @param f
+	 *            the f
+	 * @return the player
+	 */
 	public static Player createPlayer(JFrame f) {
 		Player p = callPlayerDialog(f, "New Player", null);
 		if (p != null) {
@@ -20,17 +41,42 @@ public class Handler_Player {
 		return p;
 	}
 
+	/**
+	 * Delete player.
+	 *
+	 * @param player
+	 *            the player
+	 * @param sort
+	 *            the sort
+	 * @return the player[]
+	 */
 	public static Player[] deletePlayer(Player player, PlayerSort sort) {
 		DBHandler.removeObject(player);
 		return loadPlayers(sort);
 	}
 
+	/**
+	 * Edits the player.
+	 *
+	 * @param f
+	 *            the f
+	 * @param p
+	 *            the p
+	 * @return the player
+	 */
 	public static Player editPlayer(JFrame f, Player p) {
 		p = callPlayerDialog(f, "Edit Player", p);
 		DBHandler.updateObject(p);
 		return p;
 	}
 
+	/**
+	 * Load players.
+	 *
+	 * @param sort
+	 *            the sort
+	 * @return the player[]
+	 */
 	public static Player[] loadPlayers(PlayerSort sort) {
 		List<Player> listPlayer = DBHandler.getObjects(Player.class);
 		Player[] players = new Player[listPlayer.size()];
@@ -52,6 +98,17 @@ public class Handler_Player {
 		return players;
 	}
 
+	/**
+	 * Call player dialog.
+	 *
+	 * @param f
+	 *            the f
+	 * @param title
+	 *            the title
+	 * @param p
+	 *            the p
+	 * @return the player
+	 */
 	private static Player callPlayerDialog(JFrame f, String title, Player p) {
 		Dialog_EditPlayer dialog = new Dialog_EditPlayer(f, "Edit Player", p);
 		dialog.setVisible(true);
@@ -60,6 +117,11 @@ public class Handler_Player {
 		return p;
 	}
 
+	/**
+	 * Creates the new player object.
+	 *
+	 * @return the player
+	 */
 	public static Player createNewPlayerObject() {
 		return DBHandler.createObject(Player.class);
 	}

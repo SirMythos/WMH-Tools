@@ -28,9 +28,6 @@ public class Caster {
 	/** The caster name. */
 	private String casterName;
 
-	/** The caster short name. */
-	private String casterShortName;
-
 	/** The faction. */
 	private Faction faction;
 
@@ -68,16 +65,6 @@ public class Caster {
 	}
 
 	/**
-	 * Gets the caster short name.
-	 *
-	 * @return the caster short name
-	 */
-	@Column(name = "CasterShortName")
-	public String getCasterShortName() {
-		return casterShortName;
-	}
-
-	/**
 	 * Gets the faction.
 	 *
 	 * @return the faction
@@ -107,16 +94,6 @@ public class Caster {
 	 */
 	public void setCasterName(String casterName) {
 		this.casterName = casterName;
-	}
-
-	/**
-	 * Sets the caster short name.
-	 *
-	 * @param casterShortName
-	 *            the new caster short name
-	 */
-	public void setCasterShortName(String casterShortName) {
-		this.casterShortName = casterShortName;
 	}
 
 	/**

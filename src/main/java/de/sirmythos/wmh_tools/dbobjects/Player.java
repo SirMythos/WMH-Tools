@@ -3,15 +3,18 @@
  * Package: de.sirmythos.wmh_tools.dbobjects
  * File:	Player.java
  *
- * Date:	05.08.2016
- * Time:	14:19:22
+ * Date:	02.09.2016
+ * Time:	11:23:08
  * 
  * @author 	SirMythos
  */
 package de.sirmythos.wmh_tools.dbobjects;
 
+import static javax.persistence.FetchType.EAGER;
+
 import java.io.File;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +22,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Player.
+ * The Class Player is the JPA-Entity-Class for Player-Objects in the dynamic
+ * database of this project. Player can be added and edited by every user of
+ * this tool.
  * 
- * @author Lutz Kramer
  */
 @Entity
 @SequenceGenerator(name = "playerID", sequenceName = "playerID_sequence", initialValue = 1, allocationSize = 1)
@@ -32,19 +35,19 @@ public class Player {
 
 	// Variables
 
-	/** The id. */
+	/** The id of the object, starting with 1. */
 	private int id = 1;
 
-	/** The name. */
+	/** The name of the player. */
 	private String name;
 
-	/** The surname. */
+	/** The surname of the player. */
 	private String surname;
 
-	/** The nickname. */
+	/** The nickname of the player. */
 	private String nickname;
 
-	/** The photo. */
+	/** The photo of the player. */
 	private File photo;
 
 	// Constructors
@@ -61,51 +64,55 @@ public class Player {
 	/**
 	 * Gets the id.
 	 *
-	 * @return the id
+	 * @return The id of the object
 	 */
 	@Id
 	@GeneratedValue(generator = "playerID")
-	@Column(name = "ID", nullable = false, unique = true)
+	@Column(name = "ID", unique = true, insertable = true, updatable = true, nullable = false)
 	public int getID() {
 		return id;
 	}
 
 	/**
-	 * Gets the name.
+	 * Gets the name of the player.
 	 *
-	 * @return the name
+	 * @return The name of the player.
 	 */
-	@Column(name = "Name")
+	@Column(name = "Name", insertable = true, updatable = true, unique = false, nullable = false)
+	@Basic(fetch = EAGER, optional = false)
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Gets the surname.
+	 * Gets the surname of the player.
 	 *
-	 * @return the surname
+	 * @return The surname of the player.
 	 */
-	@Column(name = "Surname")
+	@Column(name = "Surname", insertable = true, updatable = true, unique = false)
+	@Basic(fetch = EAGER, optional = false)
 	public String getSurname() {
 		return surname;
 	}
 
 	/**
-	 * Gets the nickname.
+	 * Gets the nickname of the player.
 	 *
-	 * @return the nickname
+	 * @return The nickname of the player.
 	 */
-	@Column(name = "Nickname")
+	@Column(name = "Nickname", unique = false, updatable = true, insertable = true)
+	@Basic(fetch = EAGER, optional = false)
 	public String getNickname() {
 		return nickname;
 	}
 
 	/**
-	 * Gets the photo.
+	 * Gets the photo of the player.
 	 *
-	 * @return the photo
+	 * @return The photo of the player.
 	 */
-	@Column(name = "Photo")
+	@Column(name = "Photo", nullable = true, insertable = true, updatable = true, unique = false)
+	@Basic(optional = true, fetch = EAGER)
 	public File getPhoto() {
 		return photo;
 	}
@@ -113,59 +120,64 @@ public class Player {
 	// Setter
 
 	/**
-	 * Sets the id.
+	 * Sets the I of the player. DO NOT USE, SINCE IT IS CREATED BY THE
+	 * DATABASE.
 	 *
 	 * @param iD
-	 *            the new id
+	 *            The new ID of the player.
 	 */
 	public void setID(int iD) {
 		id = iD;
 	}
 
 	/**
-	 * Sets the name.
+	 * Sets the name of the player.
 	 *
 	 * @param name
-	 *            the new name
+	 *            The new name of the player.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Sets the surname.
+	 * Sets the surname of the player.
 	 *
 	 * @param surname
-	 *            the new surname
+	 *            The new surname of the player.
 	 */
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
 
 	/**
-	 * Sets the nickname.
+	 * Sets the nickname of the player.
 	 *
 	 * @param nickname
-	 *            the new nickname
+	 *            The new nickname of the player.
 	 */
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
 
 	/**
-	 * Sets the photo.
+	 * Sets the photo of the player.
 	 *
 	 * @param photo
-	 *            the new photo
+	 *            The new photo of the player.
 	 */
 	public void setPhoto(File photo) {
 		this.photo = photo;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Overrides the toString() Method of a normal Java-Object. This Method
+	 * returns the full name of the player.
 	 * 
 	 * @see java.lang.Object#toString()
+	 * 
+	 * @return full_name The full name of the player, showing as on string (name
+	 *         "nickname" surname).
 	 */
 	@Override
 	public String toString() {
