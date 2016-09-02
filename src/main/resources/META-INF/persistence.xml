@@ -54,6 +54,7 @@
 		<!-- <class>de.sirmythos.wmh_tools.dbobjects.ArmyList</class> -->
 		<!-- <class>de.sirmythos.wmh_tools.dbobjects.Event</class> -->
 		<!-- <class>de.sirmythos.wmh_tools.dbobjects.Game</class> -->
+		<!-- <class>de.sirmythos.wmh_tools_dbobjects.Tournament</class> -->
 		<exclude-unlisted-classes />
 
 		<properties>
