@@ -15,41 +15,41 @@ package de.sirmythos.wmh_tools.enums;
  * The Enum Faction.
  */
 public enum Faction {
-	
+
 	/** The cygnar. */
-	CYGNAR,
-	
+	CYGNAR, // DB-Reference: 0
+
 	/** The protectorate of menoth. */
-	PROTECTORATE_OF_MENOTH,
-	
+	PROTECTORATE_OF_MENOTH, // DB-Reference: 1
+
 	/** The khador. */
-	KHADOR,
-	
+	KHADOR, // DB-Reference: 2
+
 	/** The cryx. */
-	CRYX,
-	
+	CRYX, // DB-Reference: 3
+
 	/** The retribution of scyrah. */
-	RETRIBUTION_OF_SCYRAH,
-	
+	RETRIBUTION_OF_SCYRAH, // DB-Reference: 4
+
 	/** The convergence of cyriss. */
-	CONVERGENCE_OF_CYRISS,
-	
+	CONVERGENCE_OF_CYRISS, // DB-Reference: 5
+
 	/** The mercenaries. */
-	MERCENARIES,
-	
+	MERCENARIES, // DB-Reference: 6
+
 	/** The trollblood. */
-	TROLLBLOOD,
-	
+	TROLLBLOOD, // DB-Reference: 7
+
 	/** The circle orboros. */
-	CIRCLE_ORBOROS,
-	
+	CIRCLE_ORBOROS, // DB-Reference: 8
+
 	/** The legion of everblight. */
-	LEGION_OF_EVERBLIGHT,
-	
+	LEGION_OF_EVERBLIGHT, // DB-Reference: 9
+
 	/** The skorne. */
-	SKORNE,
-	
+	SKORNE, // DB-Reference: 10
+
 	/** The minions. */
-	MINIONS
-	
+	MINIONS// DB-Reference: 11
+
 }

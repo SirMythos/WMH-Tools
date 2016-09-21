@@ -16,6 +16,7 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import de.sirmythos.dbhandler.DBHandler;
+import de.sirmythos.dbhandler.Database;
 import de.sirmythos.wmh_tools.dbobjects.Player;
 import de.sirmythos.wmh_tools.enums.PlayerSort;
 import de.sirmythos.wmh_tools.gui.Dialog_EditPlayer;
@@ -36,7 +37,7 @@ public class Handler_Player {
 	public static Player createPlayer(JFrame f) {
 		Player p = callPlayerDialog(f, "New Player", null);
 		if (p != null) {
-			p = DBHandler.insertObject(p);
+			p = DBHandler.insertObject(p, Database.DynamicDB);
 		}
 		return p;
 	}
@@ -51,7 +52,7 @@ public class Handler_Player {
 	 * @return the player[]
 	 */
 	public static Player[] deletePlayer(Player player, PlayerSort sort) {
-		DBHandler.removeObject(player);
+		DBHandler.removeObject(player, Database.DynamicDB);
 		return loadPlayers(sort);
 	}
 
@@ -66,7 +67,7 @@ public class Handler_Player {
 	 */
 	public static Player editPlayer(JFrame f, Player p) {
 		p = callPlayerDialog(f, "Edit Player", p);
-		DBHandler.updateObject(p);
+		DBHandler.updateObject(p, Database.DynamicDB);
 		return p;
 	}
 
@@ -78,7 +79,7 @@ public class Handler_Player {
 	 * @return the player[]
 	 */
 	public static Player[] loadPlayers(PlayerSort sort) {
-		List<Player> listPlayer = DBHandler.getObjects(Player.class);
+		List<Player> listPlayer = DBHandler.getObjects(Player.class, Database.DynamicDB);
 		Player[] players = new Player[listPlayer.size()];
 		for (int i = 0; i < players.length; i++) {
 			players[i] = listPlayer.get(i);
@@ -123,7 +124,7 @@ public class Handler_Player {
 	 * @return the player
 	 */
 	public static Player createNewPlayerObject() {
-		return DBHandler.createObject(Player.class);
+		return DBHandler.createObject(Player.class, Database.DynamicDB);
 	}
 
 }

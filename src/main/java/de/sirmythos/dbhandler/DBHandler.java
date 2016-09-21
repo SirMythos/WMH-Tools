@@ -1,3 +1,13 @@
+/*
+ * Project: WMH-Tools
+ * Package: de.sirmythos.dbhandler
+ * File:	DBHandler.java
+ *
+ * Date:	21.09.2016
+ * Time:	10:33:27
+ * 
+ * @author 	SirMythos
+ */
 package de.sirmythos.dbhandler;
 
 import java.util.List;
@@ -14,13 +24,14 @@ import javax.persistence.criteria.Root;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConnectionManager.
- *
- * @author Lutz Kramer
  */
 public class DBHandler {
 
-	/** The Constant persistenzDescriptor. */
-	private final static String persistenzDescriptor = "de.sirmythos.database.dynamicDB";
+	/** The Constant persistenzDescriptors. */
+	private final static String persistenzDescriptorDynamicDB = "de.sirmythos.database.dynamicDB";
+
+	/** The Constant persistenzDescriptorStaticDB. */
+	private final static String persistenzDescriptorStaticDB = "de.sirmythos.database.staticDB";
 
 	/** The emf. */
 	private static EntityManagerFactory emf;
@@ -30,24 +41,41 @@ public class DBHandler {
 
 	/**
 	 * Instantiates a new connection manager.
+	 *
+	 * @param database
+	 *            the database
 	 */
-	private static void startManager() {
+	private static void startManager(final Database database) {
+		switch (database) {
+		case DynamicDB:
+			startManagerDynamicDB();
+			break;
+		case StaticDB:
+			startManagerStaticDB();
+			break;
+		}
+
+	}
+
+	/**
+	 * Instantiates a new connection manager for the dynamicDB.
+	 */
+	private static void startManagerDynamicDB() {
 		// Erzeugen einer EntityManagerFactory mit Hilfe des symbolischen
 		// Namens aus dem Persistenz Descriptor (persistence.xml)
-		emf = Persistence.createEntityManagerFactory(persistenzDescriptor);
+		emf = Persistence.createEntityManagerFactory(persistenzDescriptorDynamicDB);
 		// Erzeugen eines EntityManagers für den Zugriff auf
 		// die Datenbank
 		manager = emf.createEntityManager();
 	}
 
 	/**
-	 * Instantiates a new connection manager.
+	 * Instantiates a new connection manager for the staticDB.
 	 */
-	@SuppressWarnings("unused")
-	private static void startManager(final String localPersistenzDescriptor) {
+	private static void startManagerStaticDB() {
 		// Erzeugen einer EntityManagerFactory mit Hilfe des symbolischen
 		// Namens aus dem Persistenz Descriptor (persistence.xml)
-		emf = Persistence.createEntityManagerFactory(localPersistenzDescriptor);
+		emf = Persistence.createEntityManagerFactory(persistenzDescriptorStaticDB);
 		// Erzeugen eines EntityManagers für den Zugriff auf
 		// die Datenbank
 		manager = emf.createEntityManager();
@@ -65,18 +93,20 @@ public class DBHandler {
 	}
 
 	/**
-	 * Creates a new object for the Database
-	 * 
+	 * Creates a new object for the Database.
+	 *
 	 * @param <T>
 	 *            The class of the entity to identify the classtype.
 	 * @param entityClass
 	 *            The classtype of the entity to identify the database.
+	 * @param db
+	 *            the db
 	 * @return The newly createt object.
 	 */
 	@SuppressWarnings("finally")
-	public static <T> T createObject(Class<T> entityClass) {
+	public static <T> T createObject(Class<T> entityClass, Database db) {
 		T result = null;
-		startManager();
+		startManager(db);
 		manager.getTransaction().begin();
 		try {
 			result = entityClass.newInstance();
@@ -100,9 +130,12 @@ public class DBHandler {
 	 *            The class of the entity to identify the classtype.
 	 * @param object
 	 *            The object that sould be insert into the database.
+	 * @param db
+	 *            the db
+	 * @return the t
 	 */
-	public static <T> T insertObject(T object) {
-		startManager();
+	public static <T> T insertObject(T object, Database db) {
+		startManager(db);
 		manager.getTransaction().begin();
 		manager.persist(object);
 		manager.getTransaction().commit();
@@ -122,11 +155,13 @@ public class DBHandler {
 	 *            The classtype of the entity to identify the database.
 	 * @param id
 	 *            The id of the object in the database.
+	 * @param db
+	 *            the db
 	 * @return The object from the Database or NULL, if an object with the given
 	 *         id is not found.
 	 */
-	public static <T> T getObject(Class<T> entityClass, int id) {
-		startManager();
+	public static <T> T getObject(Class<T> entityClass, int id, Database db) {
+		startManager(db);
 		EntityTransaction trans = manager.getTransaction();
 		T result = manager.find(entityClass, id);
 		trans.begin();
@@ -141,16 +176,18 @@ public class DBHandler {
 	 * Gets a list of objects from the database.
 	 * 
 	 * Example: List<Object> list = DBHandler.getObjects(Object.class);
-	 * 
+	 *
 	 * @param <T>
 	 *            The class of the entities to identify the classtype.
 	 * @param entityClass
 	 *            The classtype of the entities to identify the database.
+	 * @param db
+	 *            the db
 	 * @return The objects from the Database or NULL, if no such object is not
 	 *         found.
 	 */
-	public static <T> List<T> getObjects(Class<T> entityClass) {
-		startManager();
+	public static <T> List<T> getObjects(Class<T> entityClass, Database db) {
+		startManager(db);
 		CriteriaBuilder cb = manager.getCriteriaBuilder();
 		CriteriaQuery<T> cq = cb.createQuery(entityClass);
 		Root<T> rootEntry = cq.from(entityClass);
@@ -164,16 +201,18 @@ public class DBHandler {
 
 	/**
 	 * Update a given object in the database.
-	 *
-	 * Example: DBHandler.updateObject(object);
 	 * 
+	 * Example: DBHandler.updateObject(object);
+	 *
 	 * @param <T>
 	 *            The class of the entity to identify the classtype.
 	 * @param object
 	 *            The object to update in the database.
+	 * @param db
+	 *            the db
 	 */
-	public static <T> void updateObject(T object) {
-		startManager();
+	public static <T> void updateObject(T object, Database db) {
+		startManager(db);
 		manager.getTransaction().begin();
 		manager.merge(object);
 		manager.getTransaction().commit();
@@ -189,9 +228,11 @@ public class DBHandler {
 	 *            The class of the entity to identify the classtype.
 	 * @param object
 	 *            The object to remove from the database.
+	 * @param db
+	 *            the db
 	 */
-	public static <T> void removeObject(T object) {
-		startManager();
+	public static <T> void removeObject(T object, Database db) {
+		startManager(db);
 		if (!manager.contains(object)) {
 			manager.getTransaction().begin();
 			object = manager.merge(object);

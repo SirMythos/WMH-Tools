@@ -35,6 +35,8 @@ public class LanguageHandler {
 	 */
 	public static <T> String translate(Locale locale, Class<T> entityClass, String t) {
 
+		t = t.replace(" ", "_");
+
 		String languagePack = "language/";
 
 		String[] s = entityClass.getName().split(Pattern.quote("."));
