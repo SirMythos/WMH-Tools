@@ -10,6 +10,10 @@
  */
 package de.sirmythos.wmh_tools.enums;
 
+import java.util.Locale;
+
+import de.sirmythos.language.LanguageHandler;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Enum Faction.
@@ -50,6 +54,10 @@ public enum Faction {
 	SKORNE, // DB-Reference: 10
 
 	/** The minions. */
-	MINIONS// DB-Reference: 11
+	MINIONS;// DB-Reference: 11
 
+	public String toString(Locale l){
+		return LanguageHandler.translate(l, Faction.class, name());
+	}
+	
 }

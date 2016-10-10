@@ -12,7 +12,7 @@
         </description>
 		<class>de.sirmythos.wmh_tools.dbobjects.Caster</class>
 		<class>de.sirmythos.wmh_tools.dbobjects.Scenario</class>
-		<!-- <class>de.sirmythos.wmh_tools.dbobjects.Objective</class> -->
+		<class>de.sirmythos.wmh_tools.dbobjects.Objective</class>
 		<exclude-unlisted-classes />
 
 		<properties>

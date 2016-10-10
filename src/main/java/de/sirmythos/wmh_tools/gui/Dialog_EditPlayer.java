@@ -47,7 +47,7 @@ public class Dialog_EditPlayer extends JDialog {
 		setTitle(title);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setBounds(100, 100, 500, 600);
+		setBounds(100, 100, 500, 600);
 		{
 			JPanel panelMain = new JPanel();
 			getContentPane().add(panelMain, BorderLayout.CENTER);

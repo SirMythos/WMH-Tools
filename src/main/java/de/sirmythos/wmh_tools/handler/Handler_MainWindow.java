@@ -38,7 +38,7 @@ public class Handler_MainWindow {
 	 *            the f
 	 */
 	public static void newList(JFrame f) {
-		System.out.println("List");
+		Handler_List.createList(f);
 	}
 
 	/**

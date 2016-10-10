@@ -1,6 +1,6 @@
 package de.sirmythos.wmh_tools.starter;
 
-import de.sirmythos.wmh_tools.gui.Window_MainWindow;
+import de.sirmythos.background.BG_MainFrame;
 
 public class WMH_Tools {
 
@@ -9,7 +9,8 @@ public class WMH_Tools {
 		// LoggerManager.setErrorLogToFile();
 		// LoggerManager.setSysOutToFile();
 
-		Window_MainWindow.main(args);
+		
+		BG_MainFrame.INSTANCE.getWindow();
 		
 		
 		

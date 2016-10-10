@@ -105,5 +105,13 @@ public class Caster {
 	public void setFaction(Faction faction) {
 		this.faction = faction;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString(){
+		return casterName;
+		
+	}
 
 }

@@ -3,25 +3,25 @@
  * Package: de.sirmythos.wmh_tools.dbobjects
  * File:	Objective.java
  *
- * Date:	31.08.2016
- * Time:	10:48:16
+ * Date:	10.10.2016
+ * Time:	10:09:56
  * 
  * @author 	SirMythos
  */
 package de.sirmythos.wmh_tools.dbobjects;
 
 import java.io.File;
+import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import de.sirmythos.language.LanguageHandler;
 import de.sirmythos.wmh_tools.enums.RuleEnviroment;
-// TODO: Auto-generated Javadoc
 
 /**
  * The Class Objective.
@@ -43,6 +43,8 @@ public class Objective {
 
 	/** The card. */
 	private File card;
+
+	private Locale locale = null;
 
 	// Constructor
 
@@ -72,7 +74,7 @@ public class Objective {
 	 *
 	 * @return the name
 	 */
-	@Column(name = "ObjectiveName")
+	@Column(name = "ObjectiveName", nullable = false)
 	public String getName() {
 		return name;
 	}
@@ -82,7 +84,7 @@ public class Objective {
 	 *
 	 * @return the rules
 	 */
-	@JoinColumn(name = "RuleEnviroment", nullable = false)
+	@Column(name = "Rules", nullable = false)
 	public RuleEnviroment getRules() {
 		return rules;
 	}
@@ -92,7 +94,7 @@ public class Objective {
 	 *
 	 * @return the card
 	 */
-	@JoinColumn(name = "CardImage")
+	@Column(name = "Card", nullable = true)
 	public File getCard() {
 		return card;
 	}
@@ -137,6 +139,19 @@ public class Objective {
 	 */
 	public void setCard(File card) {
 		this.card = card;
+	}
+
+	public void setLocale(Locale locale) {
+		this.locale = locale;
+	}
+
+	public String toString() {
+		if (locale == null) {
+			return name;
+		} else {
+			return LanguageHandler.translate(locale, Objective.class, name);
+		}
+
 	}
 
 }

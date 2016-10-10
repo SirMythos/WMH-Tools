@@ -111,7 +111,7 @@ public class Handler_Player {
 	 * @return the player
 	 */
 	private static Player callPlayerDialog(JFrame f, String title, Player p) {
-		Dialog_EditPlayer dialog = new Dialog_EditPlayer(f, "Edit Player", p);
+		Dialog_EditPlayer dialog = new Dialog_EditPlayer(f, title, p);
 		dialog.setVisible(true);
 		p = dialog.getPlayerData();
 		dialog.dispose();
